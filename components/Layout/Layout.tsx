@@ -77,8 +77,13 @@ export default function Layout({ title, header, children }: Props) {
             </div>
           )}
 
-          {/* Display fetched data as HTML */}
-          <div dangerouslySetInnerHTML={{ __html: data }} />
+          {/* Display title and fetched data as HTML table */}
+          {data && (
+            <div>
+              <h2>Free Predictions</h2>
+              <table dangerouslySetInnerHTML={{ __html: data }} />
+            </div>
+          )}
 
           {children}
         </StrictMode>
