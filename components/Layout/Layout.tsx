@@ -13,8 +13,8 @@ export default function Layout({ title, header, children }: Props) {
     <div>
       <Head>
         {/* ... (existing Head content) */}
-        <meta name="description" content="Your website description" />
-        <meta name="keywords" content="your,keywords,here" />
+        <meta name="description" content="Today Football predictions" />
+        <meta name="keywords" content="ootball predictions for today, football scores, livescores, betting tips, football match predictions, fottball scores, forebet redictions, fottball predictions for tomorrow, sure football predictions, football betting tips" />
         {/* Add other necessary meta tags */}
 
         <GoogleAdSenseScript />
