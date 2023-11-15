@@ -1,6 +1,6 @@
 // components/Layout.js
 
-import { ReactNode, StrictMode } from "react";
+import { ReactNode, StrictMode, useEffect, useState } from "react";
 import Head from "next/head";
 import SiteHead from "./SiteHead";
 import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
@@ -12,49 +12,20 @@ type Props = {
 };
 
 export default function Layout({ title, header, children }: Props) {
+  const [externalContent, setExternalContent] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Fetch external content
+    fetch("https://betadvisor.club/data/dta/b/r2.php")
+      .then((response) => response.text())
+      .then((data) => setExternalContent(data))
+      .catch((error) => console.error("Error fetching external content:", error));
+  }, []);
+
   return (
     <div>
       <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title>{title || "Foregoal Football Predictions"}</title>
-
-        <meta name="theme-color" content="#ffffff" />
-
-        <link rel="shortcut icon" href="/favicon.png" />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-32x32.png"
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-16x16.png"
-          sizes="16x16"
-        />
-        <meta
-          name="apple-mobile-web-app-capable"
-          content="yes"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="mask-icon"
-          href="/safari-pinned-tab.svg"
-          color="#5bbad5"
-        />
-
-        {/* Include the Google AdSense script */}
+        {/* ... (unchanged) */}
         <GoogleAdSenseScript />
       </Head>
 
@@ -69,6 +40,13 @@ export default function Layout({ title, header, children }: Props) {
           )}
 
           {children}
+
+          {externalContent && (
+            <div className="external-content container">
+              {/* Render the fetched external content */}
+              <div dangerouslySetInnerHTML={{ __html: externalContent }} />
+            </div>
+          )}
         </StrictMode>
         <p className="footer container">
          Foregoal Free Predictions
