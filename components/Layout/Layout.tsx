@@ -33,10 +33,6 @@ export default function Layout({ title, header, children }: Props) {
 
           {children}
         </StrictMode>
-
-        {/* Add the iframe after StrictMode */}
-        <iframe src="https://betadvisor.club/data/dta/b/r2.php"></iframe>
-
         <p className="footer container">
           Foregoal Free Predictions
         </p>
