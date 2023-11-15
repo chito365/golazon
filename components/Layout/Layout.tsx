@@ -1,9 +1,9 @@
 // components/Layout.js
 
-import { ReactNode, StrictMode } from 'react';
-import Head from 'next/head';
-import SiteHead from './SiteHead';
-import GoogleAdSenseScript from './GoogleAdSenseScript'; // Adjust the path
+import { ReactNode, StrictMode } from "react";
+import Head from "next/head";
+import SiteHead from "./SiteHead";
+import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
 
 type Props = {
   title: string | false;
@@ -18,7 +18,7 @@ export default function Layout({ title, header, children }: Props) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>{title || 'Foregoal Football Predictions'}</title>
+        <title>{title || "Foregoal Football Predictions"}</title>
 
         <meta name="theme-color" content="#ffffff" />
 
@@ -35,14 +35,24 @@ export default function Layout({ title, header, children }: Props) {
           href="/favicon-16x16.png"
           sizes="16x16"
         />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-capable"
+          content="yes"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
-        <link rel="apple-touch-startup-image" href="/apple-touch-icon.png" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <link
+          rel="apple-touch-startup-image"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="mask-icon"
+          href="/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
 
         {/* Include the Google AdSense script */}
         <GoogleAdSenseScript />
@@ -63,7 +73,7 @@ export default function Layout({ title, header, children }: Props) {
 
         <p className="footer container">
           <a href="/developer/">data api</a>
-          {' • '}
+          {" • "}
           <a
             href="https://beadvisor.club"
             target="_blank"
