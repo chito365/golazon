@@ -1,9 +1,9 @@
 // components/Layout.js
 
-import { ReactNode, StrictMode, useState, useEffect } from "react";
+import { ReactNode, StrictMode } from "react";
 import Head from "next/head";
 import SiteHead from "./SiteHead";
-import GoogleAdSenseScript from "./GoogleAdSenseScript";
+import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
 
 type Props = {
   title: string | false;
@@ -12,25 +12,6 @@ type Props = {
 };
 
 export default function Layout({ title, header, children }: Props) {
-  const [data, setData] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://betadvisor.club/data/dta/b/r2.php");
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
-        }
-        const result = await response.text();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []); // Empty dependency array ensures this effect runs once after the initial render
-
   return (
     <div>
       <Head>
@@ -73,6 +54,7 @@ export default function Layout({ title, header, children }: Props) {
           color="#5bbad5"
         />
 
+        {/* Include the Google AdSense script */}
         <GoogleAdSenseScript />
       </Head>
 
@@ -85,16 +67,6 @@ export default function Layout({ title, header, children }: Props) {
               <h1>{header}</h1>
             </div>
           )}
-
-          <StrictMode>
-            {/* Display title and fetched data as HTML table */}
-            {data && (
-              <div>
-                <h2>Free Predictions</h2>
-                <div dangerouslySetInnerHTML={{ __html: data }} />
-              </div>
-            )}
-          </StrictMode>
 
           {children}
         </StrictMode>
