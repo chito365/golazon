@@ -59,11 +59,11 @@ export default function Layout({ title, header, children }: Props) {
           <a href="/developer/">data api</a>
           {" • "}
           <a
-            href="https://github.com/golazon/golazon"
+            href="https://beadvisor.club"
             target="_blank"
             rel="noreferrer"
           >
-            github (source)
+            Become a Tipster (get paid)
           </a>
         </p>
       </div>
