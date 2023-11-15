@@ -1,6 +1,6 @@
 // components/Layout.js
 
-import { ReactNode, StrictMode, useEffect, useState } from "react";
+import { ReactNode, StrictMode, useState, useEffect } from "react";
 import Head from "next/head";
 import SiteHead from "./SiteHead";
 import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
@@ -15,11 +15,18 @@ export default function Layout({ title, header, children }: Props) {
   const [externalContent, setExternalContent] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch external content
-    fetch("https://betadvisor.club/data/dta/b/r2.php")
-      .then((response) => response.text())
-      .then((data) => setExternalContent(data))
-      .catch((error) => console.error("Error fetching external content:", error));
+    // Fetch external content when the component mounts
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://betadvisor.club/data/dta/b/r2.php");
+        const data = await response.text();
+        setExternalContent(data);
+      } catch (error) {
+        console.error("Error fetching external content:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -49,7 +56,7 @@ export default function Layout({ title, header, children }: Props) {
           )}
         </StrictMode>
         <p className="footer container">
-         Foregoal Free Predictions
+          Foregoal Free Predictions
         </p>
         <p className="footer container">
           <a href="/developer/">data api</a>
