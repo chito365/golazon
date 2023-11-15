@@ -16,7 +16,8 @@ export default function Layout({ title, header, children }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <title>{title || "Foregoal Football Predictions"}</title>
-
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8692118545628405"
+     crossorigin="anonymous"></script>
         <meta name="theme-color" content="#ffffff" />
 
         <link rel="shortcut icon" href="/favicon.png" />
