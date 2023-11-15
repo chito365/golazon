@@ -3,7 +3,8 @@
 import { ReactNode, StrictMode, useState, useEffect } from "react";
 import Head from "next/head";
 import SiteHead from "./SiteHead";
-import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
+import GoogleAdSenseScript from "./GoogleAdSenseScript";
+import axios from "axios"; // Import axios
 
 type Props = {
   title: string | false;
@@ -18,9 +19,8 @@ export default function Layout({ title, header, children }: Props) {
     // Fetch external content when the component mounts
     const fetchData = async () => {
       try {
-        const response = await fetch("https://betadvisor.club/data/dta/b/r2.php");
-        const data = await response.text();
-        setExternalContent(data);
+        const response = await axios.get("https://betadvisor.club/data/dta/b/r2.php");
+        setExternalContent(response.data);
       } catch (error) {
         console.error("Error fetching external content:", error);
       }
