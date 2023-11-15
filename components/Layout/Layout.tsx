@@ -15,7 +15,7 @@ export default function Layout({ title, header, children }: Props) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>{title || "Golazon"}</title>
+        <title>{title || "Foregoal Football Predictions"}</title>
 
         <meta name="theme-color" content="#ffffff" />
 
@@ -59,11 +59,11 @@ export default function Layout({ title, header, children }: Props) {
           <a href="/developer/">data api</a>
           {" • "}
           <a
-            href="https://github.com/golazon/golazon"
+            href="https://betadvisor.club/"
             target="_blank"
             rel="noreferrer"
           >
-            github (source)
+            Become a Tipster (get paid)
           </a>
         </p>
       </div>
