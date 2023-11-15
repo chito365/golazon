@@ -21,8 +21,9 @@ export default function Layout({ title, header, children }: Props) {
         <title>{title || "Foregoal Football Predictions"}</title>
         <meta name="description" content="Today Football Predictions" />
         <meta name="keywords" content="ootball predictions for today, football scores, livescores, betting tips, football match predictions, fottball scores, forebet redictions, fottball predictions for tomorrow, sure football predictions, football betting tips" />
-
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="author" content="Chito365" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+               <meta name="theme-color" content="#ffffff" />
 
         <link rel="shortcut icon" href="/favicon.png" />
         <link
