@@ -70,7 +70,9 @@ export default function Layout({ title, header, children }: Props) {
 
           {children}
         </StrictMode>
-
+        <p className="footer container">
+         Foregoal Free Predictions
+        </p>
         <p className="footer container">
           <a href="/developer/">data api</a>
           {" • "}
