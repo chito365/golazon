@@ -77,13 +77,15 @@ export default function Layout({ title, header, children }: Props) {
             </div>
           )}
 
-          {/* Display title and fetched data as HTML table */}
-          {data && (
-            <div>
-              <h2>Free Predictions</h2>
-              <table dangerouslySetInnerHTML={{ __html: data }} />
-            </div>
-          )}
+          <StrictMode>
+            {/* Display title and fetched data as HTML table */}
+            {data && (
+              <div>
+                <h2>Free Predictions</h2>
+                <table dangerouslySetInnerHTML={{ __html: data }} />
+              </div>
+            )}
+          </StrictMode>
 
           {children}
         </StrictMode>
@@ -92,7 +94,7 @@ export default function Layout({ title, header, children }: Props) {
           <a href="/developer/">data api</a>
           {" • "}
           <a
-            href="https://beadvisor.club"
+            href="https://betdvisor.club"
             target="_blank"
             rel="noreferrer"
           >
