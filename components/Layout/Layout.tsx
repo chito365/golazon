@@ -15,17 +15,64 @@ export default function Layout({ title, header, children }: Props) {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    // Fetch data from the local API route
-    fetch("/api/predictions")
-      .then((response) => response.text())
-      .then((result) => setData(result))
-      .catch((error) => console.error("Error fetching data:", error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://betadvisor.club/data/dta/b/r2.php");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+        }
+        const result = await response.text();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []); // Empty dependency array ensures this effect runs once after the initial render
 
   return (
     <div>
       <Head>
-        {/* ... (unchanged) */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>{title || "Foregoal Football Predictions"}</title>
+
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-32x32.png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-16x16.png"
+          sizes="16x16"
+        />
+        <meta
+          name="apple-mobile-web-app-capable"
+          content="yes"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="mask-icon"
+          href="/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
+
         <GoogleAdSenseScript />
       </Head>
 
@@ -44,7 +91,7 @@ export default function Layout({ title, header, children }: Props) {
             {data && (
               <div>
                 <h2>Free Predictions</h2>
-                <table dangerouslySetInnerHTML={{ __html: data }} />
+                <div dangerouslySetInnerHTML={{ __html: data }} />
               </div>
             )}
           </StrictMode>
