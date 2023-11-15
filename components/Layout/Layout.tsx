@@ -1,6 +1,9 @@
-import { ReactNode, StrictMode } from "react";
-import Head from "next/head";
-import SiteHead from "./SiteHead";
+// components/Layout.js
+
+import { ReactNode, StrictMode } from 'react';
+import Head from 'next/head';
+import SiteHead from './SiteHead';
+import GoogleAdSenseScript from './GoogleAdSenseScript'; // Adjust the path
 
 type Props = {
   title: string | false;
@@ -15,7 +18,7 @@ export default function Layout({ title, header, children }: Props) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>{title || "Foregoal Football Predictions"}</title>
+        <title>{title || 'Foregoal Football Predictions'}</title>
 
         <meta name="theme-color" content="#ffffff" />
 
@@ -40,6 +43,9 @@ export default function Layout({ title, header, children }: Props) {
         />
         <link rel="apple-touch-startup-image" href="/apple-touch-icon.png" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+
+        {/* Include the Google AdSense script */}
+        <GoogleAdSenseScript />
       </Head>
 
       <div id="app">
@@ -57,7 +63,7 @@ export default function Layout({ title, header, children }: Props) {
 
         <p className="footer container">
           <a href="/developer/">data api</a>
-          {" • "}
+          {' • '}
           <a
             href="https://beadvisor.club"
             target="_blank"
