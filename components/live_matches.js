@@ -1,29 +1,32 @@
-// Import necessary TypeScript definitions for jQuery and DataTables
-import * as $ from 'jquery';
-import 'datatables.net';
+// Import necessary TypeScript definitions
+import axios from 'axios';
 
-$(document).ready(() => {
-    // Read the data from the updated JSON URL
-    $.getJSON('https://betadvisor.club/data/dta/b/data.json', (data) => {
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Fetch data from the updated JSON URL
+        const response = await axios.get('https://betadvisor.club/data/dta/b/data.json');
+        const data = response.data;
+
         // Check if the "Odds" column is missing or empty
         const filteredData = data.filter((row: any) => !!(row[7]));
 
-        // Build the HTML table
-        const tableBody = $('#myTable tbody');
-        filteredData.forEach((row: any) => {
-            const htmlRow = `<tr>
-                                <td>${row[0]}</td>
-                                <td>${row[3]}</td>
-                                <td>${row[4]}</td>
-                                <td>${row[6]}</td>
-                                <td>${row[7]}</td>
-                            </tr>`;
-            tableBody.append(htmlRow);
-        });
-
-        // Initialize DataTables
-        $('#myTable').DataTable({
-            pageLength: 20, // Set the number of items per page to 20
-        });
-    });
+        // Build the HTML content
+        const dataContainer = document.getElementById('dataContainer');
+        if (dataContainer) {
+            filteredData.forEach((row: any) => {
+                const divElement = document.createElement('div');
+                divElement.innerHTML = `
+                    <p>Date: ${row[0]}</p>
+                    <p>Match: ${row[3]}</p>
+                    <p>Score: ${row[4]}</p>
+                    <p>Bet Type: ${row[6]}</p>
+                    <p>Odds: ${row[7]}</p>
+                    <hr>
+                `;
+                dataContainer.appendChild(divElement);
+            });
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
 });
