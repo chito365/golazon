@@ -70,13 +70,26 @@ export default function LiveMatches() {
 // Function to fetch additional data from the provided JSON source
 async function fetchAdditionalData(competitionId) {
   try {
+    if (!competitionId) {
+      throw new Error("Competition ID is missing");
+    }
+
     const response = await fetch(
       `https://betadvisor.club/data/dta/b/data.json`
     );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
     const data = await response.json();
 
     // Extract relevant data based on competitionId
     const competitionData = data[competitionId];
+
+    if (!competitionData) {
+      throw new Error(`No data found for competition ID: ${competitionId}`);
+    }
 
     // Display the extracted data
     return competitionData.map((item, index) => (
