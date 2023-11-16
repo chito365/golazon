@@ -24,6 +24,14 @@ export default function LiveMatches() {
     return (
       <div className="home__container container block">
         No live matches at the moment.
+        {/* Display additional data from the provided JSON source */}
+        <div>
+          <h3>Additional Data</h3>
+          <ul>
+            {/* Fetch and display data from the JSON source */}
+            {fetchAdditionalData('default_competition_id')}
+          </ul>
+        </div>
       </div>
     );
   }
