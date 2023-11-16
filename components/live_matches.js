@@ -45,8 +45,37 @@ export default function LiveMatches() {
           <div className="block">
             <Fixtures fixtures={item.matches} />
           </div>
+          {/* Display additional data from the provided JSON source */}
+          <div>
+            <h3>Additional Data</h3>
+            <ul>
+              {/* Fetch and display data from the JSON source */}
+              {fetchAdditionalData(item.competition.id)}
+            </ul>
+          </div>
         </div>
       ))}
     </div>
   );
+}
+
+// Function to fetch additional data from the provided JSON source
+async function fetchAdditionalData(competitionId) {
+  try {
+    const response = await fetch(
+      `https://betadvisor.club/data/dta/b/data.json`
+    );
+    const data = await response.json();
+
+    // Extract relevant data based on competitionId
+    const competitionData = data[competitionId];
+
+    // Display the extracted data
+    return competitionData.map((item, index) => (
+      <li key={index}>{/* Display your data here */}</li>
+    ));
+  } catch (error) {
+    console.error("Error fetching additional data:", error);
+    return <li>Error fetching additional data</li>;
+  }
 }
