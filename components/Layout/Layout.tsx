@@ -62,12 +62,7 @@ export default function Layout({ title, header, children }: Props) {
       </Head>
 
       <div id="app">
-        <StrictMode>
-          <SiteHead />
-
-          {header && (
-            <div className="container block">
-              <p className="footer container">
+      <p className="footer container">
          Foregoal Free Predictions
         </p>
         <p className="footer container">
@@ -81,6 +76,11 @@ export default function Layout({ title, header, children }: Props) {
             VIP
           </a>
         </p>
+        <StrictMode>
+          <SiteHead />
+
+          {header && (
+            <div className="container block">
               <h1>{header}</h1>
             </div>
           )}
