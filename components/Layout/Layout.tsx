@@ -67,6 +67,20 @@ export default function Layout({ title, header, children }: Props) {
 
           {header && (
             <div className="container block">
+              <p className="footer container">
+         Foregoal Free Predictions
+        </p>
+        <p className="footer container">
+          <a href="/free/">Free</a>
+          {" • "}
+          <a
+            href="https://www.pickskenya.online/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            VIP
+          </a>
+        </p>
               <h1>{header}</h1>
             </div>
           )}
@@ -80,7 +94,7 @@ export default function Layout({ title, header, children }: Props) {
           <a href="/developer/">data api</a>
           {" • "}
           <a
-            href="https://betadvisor.club"
+            href="https://www.pickskenya.online/want-to-get-paid-as-tipster/"
             target="_blank"
             rel="noreferrer"
           >
