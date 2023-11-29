@@ -1,40 +1,12 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Fixtures, Loader } from 'components/Layout';
-import { useResource, resourcePatterns } from 'common/hyena';
-import groupFixturesByCompetitionId from 'common/util/groupFixturesByCompetitionId';
+import Link from "next/link";
+import { Fixtures, Loader } from "components/Layout";
+import { useResource, resourcePatterns } from "common/hyena";
+import groupFixturesByCompetitionId from "common/util/groupFixturesByCompetitionId";
 
 export default function LiveMatches() {
   const { data: liveMatches, loading } = useResource(() =>
     resourcePatterns.liveMatches()
   );
-
-  const [additionalData, setAdditionalData] = useState([]);
-  const [additionalDataLoading, setAdditionalDataLoading] = useState(true);
-
-  useEffect(() => {
-    // Fetch additional data on component mount
-    fetchAdditionalData();
-  }, []);
-
-  const fetchAdditionalData = () => {
-    fetch('https://betadvisor.club/data/dta/b/data.json')
-      .then(response => response.json())
-      .then(data => {
-        const filteredData = data.filter(
-          row =>
-            parseFloat(row[7]) >= 2.00 &&
-            parseFloat(row[7]) <= 2.60 &&
-            row[6] === 'Over2.5'
-        );
-        setAdditionalData(filteredData);
-        setAdditionalDataLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        setAdditionalDataLoading(false);
-      });
-  };
 
   if (!liveMatches && loading) {
     return (
@@ -51,14 +23,64 @@ export default function LiveMatches() {
   if (groupedMatches.length === 0) {
     return (
       <div className="home__container container block">
-        No live matches at the moment.
+        <div className="live-matches__container">
+          {[
+            [
+              "11/29 00:00",
+              "",
+              "Mexicali",
+              "Mexicali - Saltillo",
+              "1-0",
+              "Saltillo",
+              "Under2.5",
+              "1.82",
+              "",
+              "",
+              ""
+            ],
+            [
+              "11/29 00:15",
+              "",
+              "CA Torque",
+              "CA Torque - Deportivo Maldon",
+              "5-1",
+              "Deportivo Maldon",
+              "Under2.5",
+              "1.83",
+              "",
+              "",
+              ""
+            ],
+            [
+              "11/29 00:30",
+              "",
+              "Vasco da Gama",
+              "Vasco da Gama - Corinthians",
+              "2-4",
+              "Corinthians",
+              "Over2.5",
+              "2.56",
+              "",
+              "",
+              ""
+            ]
+          ].map((rowData, index) => (
+            <div key={index} className="live-match__row">
+              {rowData.map((data, dataIndex) => (
+                <div key={dataIndex} className="live-match__data">
+                  {data}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
     <div className="home__container container">
-      {groupedMatches.map(item => (
+      {groupedMatches.map((item) => (
         <div key={item.competition.id}>
           <h2>
             <Link href={`/c/${item.competition.id}`}>
@@ -75,32 +97,6 @@ export default function LiveMatches() {
           </div>
         </div>
       ))}
-
-      {/* Table for additional data */}
-      {additionalDataLoading ? (
-        <p>Loading additional data...</p>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Kick-off</th>
-              <th>Teams</th>
-              <th>Tip</th>
-              <th>Odds</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            {additionalData.map(row => (
-              <tr key={row[0]}>
-                <td>{row[0]}</td>
-                <td>{row[3]}</td>
-                <td>{row[6]}</td>
-                <td>{row[7]}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
     </div>
   );
 }
