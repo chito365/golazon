@@ -2,11 +2,28 @@ import Link from "next/link";
 import { Fixtures, Loader } from "components/Layout";
 import { useResource, resourcePatterns } from "common/hyena";
 import groupFixturesByCompetitionId from "common/util/groupFixturesByCompetitionId";
+import { useEffect, useState } from "react";
 
 export default function LiveMatches() {
   const { data: liveMatches, loading } = useResource(() =>
     resourcePatterns.liveMatches()
   );
+
+  const [additionalData, setAdditionalData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://betadvisor.club/data/dta/b/r3.php");
+        const data = await response.json();
+        setAdditionalData(data);
+      } catch (error) {
+        console.error("Error fetching additional data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   if (!liveMatches && loading) {
     return (
@@ -23,7 +40,13 @@ export default function LiveMatches() {
   if (groupedMatches.length === 0) {
     return (
       <div className="home__container container block">
-        No live matches at the moment.
+        {additionalData ? (
+          // Display additional data fetched from the URL
+          <div>{/* Render additional data here */}</div>
+        ) : (
+          // If additional data is not available yet, you can display a loading message or do nothing
+          "No live matches at the moment."
+        )}
       </div>
     );
   }
