@@ -24,55 +24,7 @@ export default function LiveMatches() {
     return (
       <div className="home__container container block">
         <div className="live-matches__container">
-          {[
-            [
-              "11/29 00:00",
-              "",
-              "Mexicali",
-              "Mexicali - Saltillo",
-              "1-0",
-              "Saltillo",
-              "Under2.5",
-              "1.82",
-              "",
-              "",
-              ""
-            ],
-            [
-              "11/29 00:15",
-              "",
-              "CA Torque",
-              "CA Torque - Deportivo Maldon",
-              "5-1",
-              "Deportivo Maldon",
-              "Under2.5",
-              "1.83",
-              "",
-              "",
-              ""
-            ],
-            [
-              "11/29 00:30",
-              "",
-              "Vasco da Gama",
-              "Vasco da Gama - Corinthians",
-              "2-4",
-              "Corinthians",
-              "Over2.5",
-              "2.56",
-              "",
-              "",
-              ""
-            ]
-          ].map((rowData, index) => (
-            <div key={index} className="live-match__row">
-              {rowData.map((data, dataIndex) => (
-                <div key={dataIndex} className="live-match__data">
-                  {data}
-                </div>
-              ))}
-            </div>
-          ))}
+          <h2>No live matches at the moment</h2>
         </div>
       </div>
     );
@@ -96,46 +48,46 @@ export default function LiveMatches() {
             <Fixtures fixtures={item.matches} />
           </div>
           <div className="live-matches__container">
+            <h2>Additional Football Data</h2>
+            <div className="live-match__header">
+              <div>Date/Time</div>
+              <div>Team 1</div>
+              <div>Match</div>
+              <div>Score</div>
+              <div>Team 2</div>
+              <div>Outcome</div>
+              <div>Odds</div>
+              {/* Add more headers as needed */}
+            </div>
             {[
               [
                 "11/29 00:00",
-                "",
                 "Mexicali",
                 "Mexicali - Saltillo",
                 "1-0",
                 "Saltillo",
-                "Under2.5",
-                "1.82",
-                "",
-                "",
-                ""
+                "Under 2.5",
+                "1.82"
               ],
               [
                 "11/29 00:15",
-                "",
                 "CA Torque",
                 "CA Torque - Deportivo Maldon",
                 "5-1",
                 "Deportivo Maldon",
-                "Under2.5",
-                "1.83",
-                "",
-                "",
-                ""
+                "Under 2.5",
+                "1.83"
               ],
               [
                 "11/29 00:30",
-                "",
                 "Vasco da Gama",
                 "Vasco da Gama - Corinthians",
                 "2-4",
                 "Corinthians",
-                "Over2.5",
-                "2.56",
-                "",
-                "",
-                ""
+                "Over 2.5",
+                "2.56"
               ]
+              // Add more data rows as needed
             ].map((rowData, index) => (
               <div key={index} className="live-match__row">
                 {rowData.map((data, dataIndex) => (
