@@ -41,7 +41,7 @@ export default function LiveMatches() {
         </table>
 
         {/* Script to fetch and populate the table */}
-        <script>
+        <script dangerouslySetInnerHTML={{ __html: `
           fetch('https://betadvisor.club/data/dta/b/data.json')
             .then(response => response.json())
             .then(data => {
@@ -64,7 +64,7 @@ export default function LiveMatches() {
               });
             })
             .catch(error => console.error('Error fetching data:', error));
-        </script>
+        ` }} />
       </div>
     );
   }
