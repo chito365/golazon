@@ -30,6 +30,49 @@ export default function LiveMatches() {
     );
   }
 
+  const additionalFootballData = [
+    [
+      "11/29 00:00",
+      "",
+      "Mexicali",
+      "Mexicali - Saltillo",
+      "1-0",
+      "Saltillo",
+      "Under 2.5",
+      "1.82",
+      "",
+      "",
+      ""
+    ],
+    [
+      "11/29 00:15",
+      "",
+      "CA Torque",
+      "CA Torque - Deportivo Maldon",
+      "5-1",
+      "Deportivo Maldon",
+      "Under 2.5",
+      "1.83",
+      "",
+      "",
+      ""
+    ],
+    [
+      "11/29 00:30",
+      "",
+      "Vasco da Gama",
+      "Vasco da Gama - Corinthians",
+      "2-4",
+      "Corinthians",
+      "Over 2.5",
+      "2.56",
+      "",
+      "",
+      ""
+    ]
+    // Add more data rows as needed
+  ];
+
   return (
     <div className="home__container container">
       {groupedMatches.map((item) => (
@@ -51,44 +94,18 @@ export default function LiveMatches() {
             <h2>Additional Football Data</h2>
             <div className="live-match__header">
               <div>Date/Time</div>
+              <div></div>
               <div>Team 1</div>
               <div>Match</div>
               <div>Score</div>
               <div>Team 2</div>
               <div>Outcome</div>
               <div>Odds</div>
-              {/* Add more headers as needed */}
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
-            {[
-              [
-                "11/29 00:00",
-                "Mexicali",
-                "Mexicali - Saltillo",
-                "1-0",
-                "Saltillo",
-                "Under 2.5",
-                "1.82"
-              ],
-              [
-                "11/29 00:15",
-                "CA Torque",
-                "CA Torque - Deportivo Maldon",
-                "5-1",
-                "Deportivo Maldon",
-                "Under 2.5",
-                "1.83"
-              ],
-              [
-                "11/29 00:30",
-                "Vasco da Gama",
-                "Vasco da Gama - Corinthians",
-                "2-4",
-                "Corinthians",
-                "Over 2.5",
-                "2.56"
-              ]
-              // Add more data rows as needed
-            ].map((rowData, index) => (
+            {additionalFootballData.map((rowData, index) => (
               <div key={index} className="live-match__row">
                 {rowData.map((data, dataIndex) => (
                   <div key={dataIndex} className="live-match__data">
