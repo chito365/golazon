@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Fixtures, Loader } from "components/Layout";
 import { useResource, resourcePatterns } from "common/hyena";
 import groupFixturesByCompetitionId from "common/util/groupFixturesByCompetitionId";
+import { useEffect } from "react";
 
 export default function LiveMatches() {
   const { data: liveMatches, loading } = useResource(() =>
@@ -27,6 +28,33 @@ export default function LiveMatches() {
       </div>
     );
   }
+
+  // Use useEffect to run the script after the component has mounted
+  useEffect(() => {
+    // Provided script for fetching and populating the table
+    fetch('https://betadvisor.club/data/dta/b/data.json')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.getElementById('tableBody');
+
+        data.forEach(row => {
+          const odds = parseFloat(row[7]);
+          const tip = row[6];
+
+          if (odds >= 2.00 && odds <= 2.60 && tip === 'Over2.5') {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${row[0]}</td>
+              <td>${row[3]}</td>
+              <td>${row[6]}</td>
+              <td>${row[7]}</td>
+            `;
+            tableBody.appendChild(tr);
+          }
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array ensures this effect runs once after the initial render
 
   return (
     <div>
@@ -64,32 +92,6 @@ export default function LiveMatches() {
           </thead>
           <tbody id="tableBody"></tbody>
         </table>
-
-        <script>
-          {/* Provided script for fetching and populating the table */}
-          fetch('https://betadvisor.club/data/dta/b/data.json')
-            .then(response => response.json())
-            .then(data => {
-              const tableBody = document.getElementById('tableBody');
-
-              data.forEach(row => {
-                const odds = parseFloat(row[7]);
-                const tip = row[6];
-
-                if (odds >= 2.00 && odds <= 2.60 && tip === 'Over2.5') {
-                  const tr = document.createElement('tr');
-                  tr.innerHTML = `
-                    <td>${row[0]}</td>
-                    <td>${row[3]}</td>
-                    <td>${row[6]}</td>
-                    <td>${row[7]}</td>
-                  `;
-                  tableBody.appendChild(tr);
-                }
-              });
-            })
-            .catch(error => console.error('Error fetching data:', error));
-        </script>
       </div>
     </div>
   );
