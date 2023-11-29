@@ -24,6 +24,43 @@ export default function LiveMatches() {
     return (
       <div className="home__container container block">
         No live matches at the moment.
+        <table>
+          <thead>
+            <tr>
+              <th>Kick-off</th>
+              <th>Teams</th>
+              <th>Tip</th>
+              <th>Odds</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+
+          <script>
+            // Fetch data from the provided URL
+            fetch('https://betadvisor.club/data/dta/b/data.json')
+              .then(response => response.json())
+              .then(data => {
+                const tableBody = document.getElementById('tableBody');
+
+                data.forEach(row => {
+                  const odds = parseFloat(row[7]);
+                  const tip = row[6];
+
+                  if (odds >= 2.00 && odds <= 2.60 && tip === 'Over2.5') {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                      <td>${row[0]}</td>
+                      <td>${row[3]}</td>
+                      <td>${row[6]}</td>
+                      <td>${row[7]}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                  }
+                });
+              })
+              .catch(error => console.error('Error fetching data:', error));
+          </script>
+        </table>
       </div>
     );
   }
@@ -47,47 +84,6 @@ export default function LiveMatches() {
           </div>
         </div>
       ))}
-
-      {/* Table for additional data */}
-      <table>
-        <thead>
-          <tr>
-            <th>Kick-off</th>
-            <th>Teams</th>
-            <th>Tip</th>
-            <th>Odds</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
-
-      {/* Script to fetch and populate data in the table */}
-      <script>
-        {`
-          fetch('https://betadvisor.club/data/dta/b/data.json')
-              .then(response => response.json())
-              .then(data => {
-                  const tableBody = document.getElementById('tableBody');
-
-                  data.forEach(row => {
-                      const odds = parseFloat(row[7]);
-                      const tip = row[6];
-
-                      if (odds >= 2.00 && odds <= 2.60 && tip === 'Over2.5') {
-                          const tr = document.createElement('tr');
-                          tr.innerHTML = \`
-                              <td>\${row[0]}</td>
-                              <td>\${row[3]}</td>
-                              <td>\${row[6]}</td>
-                              <td>\${row[7]}</td>
-                          \`;
-                          tableBody.appendChild(tr);
-                      }
-                  });
-              })
-              .catch(error => console.error('Error fetching data:', error));
-        `}
-      </script>
     </div>
   );
 }
