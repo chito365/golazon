@@ -69,7 +69,8 @@ export default function LiveMatches() {
       "",
       "",
       ""
-    ] // Add more data rows as needed
+    ]
+    // Add more data rows as needed
   ];
 
   return (
@@ -89,35 +90,6 @@ export default function LiveMatches() {
           <div className="block">
             <Fixtures fixtures={item.matches} />
           </div>
-          <h2>Additional Football Data</h2>
-          <table className="live-match__table">
-            <thead>
-              <tr>
-                <th>Date/Time</th>
-                <th></th>
-                <th>Team 1</th>
-                <th>Match</th>
-                <th>Score</th>
-                <th>Team 2</th>
-                <th>Outcome</th>
-                <th>Odds</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {additionalFootballData.map((rowData, index) => (
-                <tr key={index} className="live-match__row">
-                  {rowData.map((data, dataIndex) => (
-                    <td key={dataIndex} className="live-match__data">
-                      {data}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       ))}
     </div>
