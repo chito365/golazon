@@ -74,6 +74,22 @@ export default function LiveMatches() {
   ];
 
   return (
+    <div className="home__container container">
+      {groupedMatches.map((item) => (
+        <div key={item.competition.id}>
+          <h2>
+            <Link href={`/c/${item.competition.id}`}>
+              <a>
+                {item.competition.name}
+                {item.competition.area_name &&
+                  ` (${item.competition.area_name}) `}
+                {item.teamtype}
+              </a>
+            </Link>
+          </h2>
+          <div className="block">
+            <Fixtures fixtures={item.matches} />
+          </div>
         </div>
       ))}
     </div>
