@@ -95,6 +95,57 @@ export default function LiveMatches() {
           <div className="block">
             <Fixtures fixtures={item.matches} />
           </div>
+          <div className="live-matches__container">
+            {[
+              [
+                "11/29 00:00",
+                "",
+                "Mexicali",
+                "Mexicali - Saltillo",
+                "1-0",
+                "Saltillo",
+                "Under2.5",
+                "1.82",
+                "",
+                "",
+                ""
+              ],
+              [
+                "11/29 00:15",
+                "",
+                "CA Torque",
+                "CA Torque - Deportivo Maldon",
+                "5-1",
+                "Deportivo Maldon",
+                "Under2.5",
+                "1.83",
+                "",
+                "",
+                ""
+              ],
+              [
+                "11/29 00:30",
+                "",
+                "Vasco da Gama",
+                "Vasco da Gama - Corinthians",
+                "2-4",
+                "Corinthians",
+                "Over2.5",
+                "2.56",
+                "",
+                "",
+                ""
+              ]
+            ].map((rowData, index) => (
+              <div key={index} className="live-match__row">
+                {rowData.map((data, dataIndex) => (
+                  <div key={dataIndex} className="live-match__data">
+                    {data}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>
