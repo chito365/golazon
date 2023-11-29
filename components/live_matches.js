@@ -92,28 +92,34 @@ export default function LiveMatches() {
           </div>
           <div className="live-matches__container">
             <h2>Additional Football Data</h2>
-            <div className="live-match__header">
-              <div>Date/Time</div>
-              <div></div>
-              <div>Team 1</div>
-              <div>Match</div>
-              <div>Score</div>
-              <div>Team 2</div>
-              <div>Outcome</div>
-              <div>Odds</div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            {additionalFootballData.map((rowData, index) => (
-              <div key={index} className="live-match__row">
-                {rowData.map((data, dataIndex) => (
-                  <div key={dataIndex} className="live-match__data">
-                    {data}
-                  </div>
+            <table className="live-match__table">
+              <thead>
+                <tr>
+                  <th>Date/Time</th>
+                  <th></th>
+                  <th>Team 1</th>
+                  <th>Match</th>
+                  <th>Score</th>
+                  <th>Team 2</th>
+                  <th>Outcome</th>
+                  <th>Odds</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {additionalFootballData.map((rowData, index) => (
+                  <tr key={index} className="live-match__row">
+                    {rowData.map((data, dataIndex) => (
+                      <td key={dataIndex} className="live-match__data">
+                        {data}
+                      </td>
+                    ))}
+                  </tr>
                 ))}
-              </div>
-            ))}
+              </tbody>
+            </table>
           </div>
         </div>
       ))}
