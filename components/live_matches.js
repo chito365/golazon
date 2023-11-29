@@ -41,8 +41,12 @@ export default function LiveMatches() {
     return (
       <div className="home__container container block">
         {additionalData ? (
-          // Display additional data fetched from the URL as HTML
-          <div dangerouslySetInnerHTML={{ __html: additionalData }} />
+          // Check if the HTML content contains the title "Free Preds for Today"
+          additionalData.includes("Free Preds for Today") ? (
+            <div dangerouslySetInnerHTML={{ __html: additionalData }} />
+          ) : (
+            "No free preds for today."
+          )
         ) : (
           // If additional data is not available yet, you can display a loading message or do nothing
           "No live matches at the moment."
