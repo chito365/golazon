@@ -15,8 +15,8 @@ export default function LiveMatches() {
     const fetchData = async () => {
       try {
         const response = await fetch("https://betadvisor.club/data/dta/b/r3.php");
-        const data = await response.json();
-        setAdditionalData(data);
+        const htmlData = await response.text();
+        setAdditionalData(htmlData);
       } catch (error) {
         console.error("Error fetching additional data:", error);
       }
@@ -41,8 +41,8 @@ export default function LiveMatches() {
     return (
       <div className="home__container container block">
         {additionalData ? (
-          // Display additional data fetched from the URL
-          <div>{/* Render additional data here */}</div>
+          // Display additional data fetched from the URL as HTML
+          <div dangerouslySetInnerHTML={{ __html: additionalData }} />
         ) : (
           // If additional data is not available yet, you can display a loading message or do nothing
           "No live matches at the moment."
