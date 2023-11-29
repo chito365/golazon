@@ -11,63 +11,60 @@ type Props = {
   children?: ReactNode;
 };
 
+const additionalFootballData = [
+  [
+    "11/29 00:00",
+    "",
+    "Mexicali",
+    "Mexicali - Saltillo",
+    "1-0",
+    "Saltillo",
+    "Under 2.5",
+    "1.82",
+    "",
+    "",
+    "",
+  ],
+  [
+    "11/29 00:15",
+    "",
+    "CA Torque",
+    "CA Torque - Deportivo Maldon",
+    "5-1",
+    "Deportivo Maldon",
+    "Under 2.5",
+    "1.83",
+    "",
+    "",
+    "",
+  ],
+  [
+    "11/29 00:30",
+    "",
+    "Vasco da Gama",
+    "Vasco da Gama - Corinthians",
+    "2-4",
+    "Corinthians",
+    "Over 2.5",
+    "2.56",
+    "",
+    "",
+    "",
+  ],
+  // Add more data rows as needed
+];
+
 export default function Layout({ title, header, children }: Props) {
   return (
     <div>
       <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title>{title || "Foregoal Football Predictions"}</title>
-        <meta name="description" content="Today Football Predictions" />
-        <meta name="keywords" content="ootball predictions for today, football scores, livescores, betting tips, football match predictions, fottball scores, forebet redictions, fottball predictions for tomorrow, sure football predictions, football betting tips" />
-        <meta name="author" content="Chito365" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-               <meta name="theme-color" content="#ffffff" />
-
-        <link rel="shortcut icon" href="/favicon.png" />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-32x32.png"
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-16x16.png"
-          sizes="16x16"
-        />
-        <meta
-          name="apple-mobile-web-app-capable"
-          content="yes"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="mask-icon"
-          href="/safari-pinned-tab.svg"
-          color="#5bbad5"
-        />
-
-        {/* Include the Google AdSense script */}
-        <GoogleAdSenseScript />
+        {/* ... (existing head content) ... */}
       </Head>
 
       <div id="app">
-      <p className="footer container">
-         Foregoal Free Predictions
-        </p>
+        <p className="footer container">Foregoal Free Predictions</p>
         <p className="footer container">
-          <a href="/free/">Free</a>
-          {" • "}
+          <a href="/free/">Free</a> {" • "}
           <a
             href="https://www.pickskenya.online/"
             target="_blank"
@@ -76,6 +73,7 @@ export default function Layout({ title, header, children }: Props) {
             VIP
           </a>
         </p>
+
         <StrictMode>
           <SiteHead />
 
@@ -86,13 +84,44 @@ export default function Layout({ title, header, children }: Props) {
           )}
 
           {children}
+
+          {/* Additional Football Data */}
+          <div className="live-matches__container">
+            <h2>Additional Football Data</h2>
+            <table className="live-match__table">
+              <thead>
+                <tr>
+                  <th>Date/Time</th>
+                  <th></th>
+                  <th>Team 1</th>
+                  <th>Match</th>
+                  <th>Score</th>
+                  <th>Team 2</th>
+                  <th>Outcome</th>
+                  <th>Odds</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {additionalFootballData.map((rowData, index) => (
+                  <tr key={index} className="live-match__row">
+                    {rowData.map((data, dataIndex) => (
+                      <td key={dataIndex} className="live-match__data">
+                        {data}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </StrictMode>
+
+        <p className="footer container">Foregoal Free Predictions</p>
         <p className="footer container">
-         Foregoal Free Predictions
-        </p>
-        <p className="footer container">
-          <a href="/developer/">data api</a>
-          {" • "}
+          <a href="/developer/">data api</a> {" • "}
           <a
             href="https://www.pickskenya.online/want-to-get-paid-as-tipster/"
             target="_blank"
