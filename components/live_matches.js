@@ -20,6 +20,8 @@ export default function LiveMatches() {
         );
         const jsonData = await response.json();
 
+        console.log("Fetched Data:", jsonData);
+
         // Assuming jsonData is an array
         setAdditionalFootballData(jsonData);
       } catch (error) {
