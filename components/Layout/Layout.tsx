@@ -66,11 +66,11 @@ export default function Layout({ title, header, children }: Props) {
         <p className="footer container">
           <a href="/free/">Free</a> {" • "}
           <a
-            href="https://www.pickskenya.online/"
+            href="/AI"
             target="_blank"
             rel="noreferrer"
           >
-            VIP
+            AI
           </a>
         </p>
 
