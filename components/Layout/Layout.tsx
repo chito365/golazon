@@ -12,47 +12,7 @@ type Props = {
 };
 
 const additionalFootballData = [
-  [
-    "11/29 00:00",
-    "",
-    "Mexicali",
-    "Mexicali - Saltillo",
-    "1-0",
-    "Saltillo",
-    "Under 2.5",
-    "1.82",
-    "",
-    "",
-    "",
-  ],
-  [
-    "11/29 00:15",
-    "",
-    "CA Torque",
-    "CA Torque - Deportivo Maldon",
-    "5-1",
-    "Deportivo Maldon",
-    "Under 2.5",
-    "1.83",
-    "",
-    "",
-    "",
-  ],
-  [
-    "11/29 00:30",
-    "",
-    "Vasco da Gama",
-    "Vasco da Gama - Corinthians",
-    "2-4",
-    "Corinthians",
-    "Over 2.5",
-    "2.56",
-    "",
-    "",
-    "",
-  ],
-  // Add more data rows as needed
-];
+  [];
 
 export default function Layout({ title, header, children }: Props) {
   return (
