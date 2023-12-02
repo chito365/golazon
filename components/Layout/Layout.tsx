@@ -54,52 +54,23 @@ export default function Layout({ title, header, children }: Props) {
           {header && (
             <div className="container block">
               <h1>{header}</h1>
+            </div>
           )}
 
           {children}
 
           {/* Additional Football Data */}
-            <h2>Additional Football Data</h2>
-            <table className="live-match__table">
-              <thead>
-                <tr>
-                  <th>Date/Time</th>
-                  <th></th>
-                  <th>Team 1</th>
-                  <th>Match</th>
-                  <th>Score</th>
-                  <th>Team 2</th>
-                  <th>Outcome</th>
-                  <th>Odds</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {additionalFootballData.map((rowData, index) => (
-                  <tr key={index} className="live-match__row">
-                    {rowData.map((data, dataIndex) => (
-                      <td key={dataIndex} className="live-match__data">
-                        {data}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </StrictMode>
 
         <p className="footer container">Foregoal Free Predictions</p>
         <p className="footer container">
           <a href="/developer/">data api</a> {" • "}
           <a
-            href="https://www.pickskenya.online/want-to-get-paid-as-tipster/"
+            href="h/"
             target="_blank"
             rel="noreferrer"
           >
-            Become a Tipster (get paid)
+             (privacy)
           </a>
         </p>
       </div>
