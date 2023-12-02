@@ -54,13 +54,11 @@ export default function Layout({ title, header, children }: Props) {
           {header && (
             <div className="container block">
               <h1>{header}</h1>
-            </div>
           )}
 
           {children}
 
           {/* Additional Football Data */}
-          <div className="live-matches__container">
             <h2>Additional Football Data</h2>
             <table className="live-match__table">
               <thead>
