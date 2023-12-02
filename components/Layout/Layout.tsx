@@ -36,7 +36,7 @@ export default function Layout({ title, header, children }: Props) {
       </Head>
 
       <div id="app">
-        <p className="footer container">Foregoal Free Predictions</p>
+        <p className="footer container">Foregoal - Free Livescore and Predictions</p>
         <p className="footer container">
           <a href="/free/">Mathemathical</a> {" • "}
           <a
@@ -62,7 +62,7 @@ export default function Layout({ title, header, children }: Props) {
           {/* Additional Football Data */}
         </StrictMode>
 
-        <p className="footer container">Foregoal Free Predictions</p>
+        <p className="footer container">Foregoal - Free Livescore and Predictions</p>
         <p className="footer container">
           <a href="/developer/">data api</a> {" • "}
           <a
