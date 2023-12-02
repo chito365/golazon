@@ -70,7 +70,7 @@ export default function Layout({ title, header, children }: Props) {
             target="_blank"
             rel="noreferrer"
           >
-            AI
+            AI Predictions
           </a>
         </p>
 
