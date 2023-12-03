@@ -38,7 +38,7 @@ export default function Layout({ title, header, children }: Props) {
       <div id="app">
         <p className="footer container">Foregoal - Free Livescore and Predictions</p>
         <p className="footer container">
-          <a href="/free/">Home</a> {" • "}
+          <a href="/">Home</a> {" • "}
           <a
             href="/AI"
             target="_blank"
