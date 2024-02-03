@@ -1,6 +1,6 @@
-// components/Layout.js
+// components/Layout.tsx
 
-import { ReactNode, StrictMode } from "react";
+import { ReactNode, StrictMode, useEffect } from "react";
 import Head from "next/head";
 import SiteHead from "./SiteHead";
 import GoogleAdSenseScript from "./GoogleAdSenseScript"; // Adjust the path
@@ -29,11 +29,23 @@ const additionalFootballData = [
 ];
 
 export default function Layout({ title, header, children }: Props) {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8692118545628405';
+    script.crossOrigin = 'anonymous';
+    
+    document.head.appendChild(script);
+
+    // Cleanup function to remove the script when the component unmounts
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []); // Empty dependency array ensures the effect runs only once
+
   return (
     <div>
       <Head>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8692118545628405"
-     crossorigin="anonymous"></script>
         {/* ... (existing head content) ... */}
       </Head>
 
