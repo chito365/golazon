@@ -24,7 +24,15 @@ export default function LiveMatches() {
     return (
       <div className="home__container container block">
         <div className="live-matches__container">
-          <h2>No live matches at the moment</h2>
+        <div className={style.main}>
+      <IframeResizer
+        heightCalculationMethod="lowestElement"
+        inPageLinks
+        frameBorder="0"
+        src="https://www.scorebat.com/embed/livescore/"
+        className={style.iFrame}
+      />
+    </div>
         </div>
       </div>
     );
