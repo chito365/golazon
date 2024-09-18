@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Fixtures, Loader } from "components/Layout";
 import { useResource, resourcePatterns } from "common/hyena";
 import groupFixturesByCompetitionId from "common/util/groupFixturesByCompetitionId";
-import LiveScore from './LiveScore'; // Importing LiveScore
 
 export default function LiveMatches() {
   const { data: liveMatches, loading } = useResource(() =>
@@ -26,11 +25,53 @@ export default function LiveMatches() {
       <div className="home__container container block">
         <div className="live-matches__container">
           <h2>No live matches at the moment</h2>
-          <LiveScore /> {/* Renders iframe when no live matches */}
         </div>
       </div>
     );
   }
+
+  const additionalFootballData = [
+    [
+      "11/29 00:00",
+      "",
+      "Mexicali",
+      "Mexicali - Saltillo",
+      "1-0",
+      "Saltillo",
+      "Under 2.5",
+      "1.82",
+      "",
+      "",
+      ""
+    ],
+    [
+      "11/29 00:15",
+      "",
+      "CA Torque",
+      "CA Torque - Deportivo Maldon",
+      "5-1",
+      "Deportivo Maldon",
+      "Under 2.5",
+      "1.83",
+      "",
+      "",
+      ""
+    ],
+    [
+      "11/29 00:30",
+      "",
+      "Vasco da Gama",
+      "Vasco da Gama - Corinthians",
+      "2-4",
+      "Corinthians",
+      "Over 2.5",
+      "2.56",
+      "",
+      "",
+      ""
+    ]
+    // Add more data rows as needed
+  ];
 
   return (
     <div className="home__container container">
@@ -49,7 +90,7 @@ export default function LiveMatches() {
           <div className="block">
             <Fixtures fixtures={item.matches} />
           </div>
-        </div>
+          </div>
       ))}
     </div>
   );
