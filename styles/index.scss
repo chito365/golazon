@@ -1,0 +1,21 @@
+@import "variables";
+@import "normalize-scss/sass/normalize";
+@import "nprogress";
+
+@import "base-primer";
+@import "base-golazon";
+
+@import "head";
+@import "footer";
+@import "loader";
+
+@import "competition";
+@import "competitions";
+@import "error";
+@import "home";
+@import "match";
+@import "matches";
+@import "paginated-fixtures";
+@import "score";
+@import "standings";
+@import "developer";

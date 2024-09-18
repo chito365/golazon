@@ -1,0 +1,19 @@
+.paginated-fixtures {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__nav {
+    a,
+    span {
+      margin-left: 0.5rem;
+    }
+    .disabled {
+      cursor: not-allowed;
+      color: lighten($body-color, 60);
+      @media (prefers-color-scheme: dark) {
+        color: darken($body-color-dark, 60);
+      }
+    }
+  }
+}
