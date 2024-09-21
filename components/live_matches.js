@@ -28,6 +28,13 @@ export default function LiveMatches() {
           <div>No matches to display</div>
           <LiveScore /> {/* Insert LiveScore component here */}
         </div>
+        <IframeResizer
+        heightCalculationMethod="lowestElement"
+        inPageLinks
+        frameBorder="0"
+        src="https://www.scorebat.com/embed/livescore/"
+        className={style.iFrame}
+      />
       </div>
     );
   }
